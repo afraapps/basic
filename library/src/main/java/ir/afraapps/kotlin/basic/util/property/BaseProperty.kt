@@ -22,7 +22,9 @@ abstract class BaseProperty<T>(initValue: T) {
     }
 
     fun addListener(listener: PropertyListener<T>) {
-        listeners.add(listener)
+        if (listeners.contains(listener).not()) {
+            listeners.add(listener)
+        }
     }
 
     fun removeListener(listener: PropertyListener<T>) {

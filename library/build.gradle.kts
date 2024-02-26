@@ -92,12 +92,12 @@ afterEvaluate {
             }
         }
 
-        repositories {
+        /*repositories {
             maven {
                 name = "afraapps"
                 url = uri("${project.layout.buildDirectory}/afraapps")
             }
-        }
+        }*/
 
     }
 }
@@ -106,20 +106,20 @@ afterEvaluate {
 dependencies {
     implementation(fileTree(mapOf("include" to listOf("*.jar"), "dir" to "libs")))
 
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.appcompat:appcompat-resources:1.6.1")
-    implementation("androidx.recyclerview:recyclerview:1.3.1")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-    implementation("androidx.fragment:fragment-ktx:1.6.1")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
 
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
 
-    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.paging:paging-runtime-ktx:3.2.1")
     implementation("androidx.slidingpanelayout:slidingpanelayout:1.2.0")
 
-    implementation("androidx.room:room-ktx:2.5.2")
+    implementation("androidx.room:room-ktx:2.6.1")
 
 }
 

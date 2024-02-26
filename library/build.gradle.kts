@@ -62,7 +62,7 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 from(components["release"])
                 groupId = "ir.afraapps"
-                artifactId = "basic-kt"
+                artifactId = "basic"
                 version = appVersionName
 
 

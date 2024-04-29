@@ -1,24 +1,15 @@
-import java.util.Date
-import java.text.SimpleDateFormat
 import com.google.common.base.CaseFormat
+import java.text.SimpleDateFormat
+import java.util.Date
 
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:8.2.2")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven { url = uri("https://jitpack.io") }
-    }
+plugins {
+    alias(libs.plugins.androidApplication) apply false
+    alias(libs.plugins.androidLibrary) apply false
+    alias(libs.plugins.kotlinAndroid) apply false
+    alias(libs.plugins.kotlinSerialization) apply false
+    alias(libs.plugins.kotlinParcelize) apply false
+    alias(libs.plugins.googleService) apply false
+    alias(libs.plugins.ksp) apply false
 }
 
 
@@ -26,15 +17,16 @@ task("clean", Delete::class) {
     delete(rootProject.layout.buildDirectory)
 }
 
-val appVersionCode by extra(2007)
-val appVersionName by extra("2.0.7")
+val appVersionCode by extra(2009)
+val appVersionName by extra("2.0.9")
 
 
 task("backup", Zip::class) {
     dependsOn("clean")
     from(projectDir)
-    val folders =
-        listOf(".git/**", ".gradle/**", ".idea/**", "build/**", "app/release/**", "app/build/**", "app/src/androidTest/**", "app/src/test/**")
+    val folders = listOf(
+        ".git/**", ".gradle/**", ".idea/**", "build/**", "app/release/**", "app/build/**", "app/src/androidTest/**", "app/src/test/**"
+    )
     excludes.addAll(folders)
     val date = Date()
     val sdf = SimpleDateFormat("yyyy.MM.dd_HH.mm")

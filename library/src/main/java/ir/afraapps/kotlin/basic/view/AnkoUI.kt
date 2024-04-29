@@ -3,7 +3,7 @@ package ir.afraapps.kotlin.basic.view
 import android.app.Activity
 import android.content.Context
 import android.view.View
-import androidx.core.view.isVisible
+import ir.afraapps.kotlin.basic.util.property.IntProperty
 
 /**
  * In the name of Allah
@@ -13,7 +13,22 @@ import androidx.core.view.isVisible
 
 abstract class AnkoUI(val context: Context) {
 
+    val primaryColorProperty = IntProperty()
+    val primaryDarkColorProperty = IntProperty()
+    val primaryLightColorProperty = IntProperty()
+    val backgroundColorProperty = IntProperty()
+    val background2ColorProperty = IntProperty()
+    val background3ColorProperty = IntProperty()
+
+    var colorPrimary: Int by primaryColorProperty
+    var colorPrimaryDark: Int by primaryDarkColorProperty
+    var colorPrimaryLight: Int by primaryLightColorProperty
+    var bgColor: Int by backgroundColorProperty
+    var bgColor2: Int by background2ColorProperty
+    var bgColor3: Int by background3ColorProperty
+
     abstract val root: View
+
 
     @Suppress("UNCHECKED_CAST")
     fun <T : AnkoUI> bind(): T {
@@ -21,7 +36,12 @@ abstract class AnkoUI(val context: Context) {
         return this as T
     }
 
-    open fun hide() = let { root.isVisible = false }
+    val isVisible: Boolean get() = root.visibility == View.VISIBLE
+
+    open fun hide() = let { root.visibility = View.GONE }
+
+    open fun show() = let { root.visibility = View.VISIBLE }
+
 
 }
 
